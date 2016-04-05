@@ -840,6 +840,10 @@ public class InAppBrowser extends CordovaPlugin {
                 } catch (android.content.ActivityNotFoundException e) {
                     LOG.e(LOG_TAG, "Error sending sms " + url + ":" + e.toString());
                 }
+            } else if(url.startsWith("primeraplus:")) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                webView.getContext().startActivity( intent );
+                return true;
             }
             return false;
         }
